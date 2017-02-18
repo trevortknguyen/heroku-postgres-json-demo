@@ -1,0 +1,41 @@
+extends ../layout.pug
+
+block imports
+  include ../includes/socketio.pug
+
+block menu
+  include ../includes/menu.pug
+
+block content
+  .ui.segment
+    .h4.ui.header Create a blog post!
+    form.ui.form
+      .field
+        label Title
+        input(
+          placeholder="Title"
+          type="text"
+          name="title"
+        )
+      .field
+        label Content
+        textarea(
+          placeholder="Content"
+          name="content"
+        )
+      button.ui.fluid.button(
+        type="submit"
+      ) Submit
+  script.
+    var socket = io();
+
+    $('form').submit(function(event) {
+      var obj = {
+        title: $("input[name='title']").val(),
+        content: $("textarea[name='content']").val().split(/\n\n/)
+      };
+      socket.emit('testblogpost', obj);
+      $("input[name='title']").val('');
+      $("textarea[name='content']").val('');
+      event.preventDefault();
+    });

@@ -1,0 +1,14 @@
+{
+  "name": "heroku-postgres-json-demo",
+  "version": "0.0.1",
+  "description": "A demonstration for using Postgres with JSON",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.14.0",
+    "pg": "^6.1.2",
+    "socket.io": "^1.7.2",
+    "pug": "^2.0.0-beta9"
+  }
+}

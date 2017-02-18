@@ -1,0 +1,15 @@
+extends ../layout.pug
+
+block menu
+  include ../includes/menu.pug
+
+block content
+  h1.ui.header Visitor's Blog
+  if articles.length
+    each article in articles
+      .ui.segment
+        h2.ui.header= article.title
+        each para in article.content
+          p= para
+  else
+    p There are no articles published by visitors yet.
