@@ -4,6 +4,8 @@ The reason why this is on GitHub is because a while ago when I was just getting 
 
 I've decided to remove that feature from my blog and place it into a different repository. I'm thinking about simplifying the code a bit so that a beginner could be able to read and understand it. I'm thinking about ditching pug to make it easier to use with just HTML.
 
+A live demo is available [here](https://heroku-postgres-json-demo.herokuapp.com/).
+
 ### What It Uses:
 * ExpressJS - as a webserver
 * PostgreSQL - as a database
