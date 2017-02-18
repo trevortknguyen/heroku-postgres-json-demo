@@ -7,10 +7,6 @@ app.set('port', process.env.PORT || 3000);
 app.set('views', './views');
 app.set('view engine', 'pug');
 
-app.use(function(req, res) {
-  res.send('404 Error');
-});
-
 app.get('/', function(req, res) {
   var rows = [];
   var query = db.query('SELECT * FROM posts');
