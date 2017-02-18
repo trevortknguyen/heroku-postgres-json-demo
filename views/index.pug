@@ -31,12 +31,14 @@ html
     )
 
   body
-    h1.ui.header Visitor's Blog
-    if articles.length
-      each article in articles
-        .ui.segment
-          h2.ui.header= article.title
-          each para in article.content
-            p= para
-    else
-      p There are no articles published by visitors yet.
+    .ui.container
+      h1.ui.header Visitor's Blog
+      p If you would like, please write a blog post at the writing <a href="/write">demo</a>!
+      if articles.length
+        each article in articles
+          .ui.segment
+            h2.ui.header= article.title
+            each para in article.content
+              p= para
+      else
+        p There are no articles published by visitors yet.
