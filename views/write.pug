@@ -1,41 +1,65 @@
-extends ../layout.pug
+doctype html
+html
+  head
+    //- jQuery CDN
+    script(
+      src='https://code.jquery.com/jquery-3.1.1.slim.min.js'
+      integrity='sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc='
+      crossorigin='anonymous'
+    )
 
-block imports
-  include ../includes/socketio.pug
+    //- Semantic-UI CSS CDN
+    link(
+      rel='stylesheet'
+      href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.7/semantic.min.css'
+      integrity='sha256-wT6CFc7EKRuf7uyVfi+MQNHUzojuHN2pSw0YWFt2K5E='
+      crossorigin='anonymous'
+    )
 
-block menu
-  include ../includes/menu.pug
+    //- Semantic-UI JS CDN
+    script(
+      src='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.7/semantic.min.js'
+      integrity='sha256-flVaeawsBV96vCHiLmXn03IRJym7+ZfcLVvUWONCas8='
+      crossorigin='anonymous'
+    )
 
-block content
-  .ui.segment
-    .h4.ui.header Create a blog post!
-    form.ui.form
-      .field
-        label Title
-        input(
-          placeholder="Title"
-          type="text"
-          name="title"
-        )
-      .field
-        label Content
-        textarea(
-          placeholder="Content"
-          name="content"
-        )
-      button.ui.fluid.button(
-        type="submit"
-      ) Submit
-  script.
-    var socket = io();
+    //- Socket.io CDN
+    script(
+      src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.2/socket.io.min.js'
+      integrity='sha256-WKvqiY0jZHWQZIohYEmr9KUC5rEaYEOFTq+ByllJK8w='
+      crossorigin='anonymous'
+    )
 
-    $('form').submit(function(event) {
-      var obj = {
-        title: $("input[name='title']").val(),
-        content: $("textarea[name='content']").val().split(/\n\n/)
-      };
-      socket.emit('testblogpost', obj);
-      $("input[name='title']").val('');
-      $("textarea[name='content']").val('');
-      event.preventDefault();
-    });
+  body
+    .ui.segment
+      .h4.ui.header Create a blog post!
+      form.ui.form
+        .field
+          label Title
+          input(
+            placeholder="Title"
+            type="text"
+            name="title"
+          )
+        .field
+          label Content
+          textarea(
+            placeholder="Content"
+            name="content"
+          )
+        button.ui.fluid.button(
+          type="submit"
+        ) Submit
+    script.
+      var socket = io();
+
+      $('form').submit(function(event) {
+        var obj = {
+          title: $("input[name='title']").val(),
+          content: $("textarea[name='content']").val().split(/\n\n/)
+        };
+        socket.emit('testblogpost', obj);
+        $("input[name='title']").val('');
+        $("textarea[name='content']").val('');
+        event.preventDefault();
+      });

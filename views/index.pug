@@ -1,15 +1,42 @@
-extends ../layout.pug
+doctype html
+html
+  head
+    //- jQuery CDN
+    script(
+      src='https://code.jquery.com/jquery-3.1.1.slim.min.js'
+      integrity='sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc='
+      crossorigin='anonymous'
+    )
 
-block menu
-  include ../includes/menu.pug
+    //- Semantic-UI CSS CDN
+    link(
+      rel='stylesheet'
+      href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.7/semantic.min.css'
+      integrity='sha256-wT6CFc7EKRuf7uyVfi+MQNHUzojuHN2pSw0YWFt2K5E='
+      crossorigin='anonymous'
+    )
 
-block content
-  h1.ui.header Visitor's Blog
-  if articles.length
-    each article in articles
-      .ui.segment
-        h2.ui.header= article.title
-        each para in article.content
-          p= para
-  else
-    p There are no articles published by visitors yet.
+    //- Semantic-UI JS CDN
+    script(
+      src='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.7/semantic.min.js'
+      integrity='sha256-flVaeawsBV96vCHiLmXn03IRJym7+ZfcLVvUWONCas8='
+      crossorigin='anonymous'
+    )
+
+    //- Socket.io CDN
+    script(
+      src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.2/socket.io.min.js'
+      integrity='sha256-WKvqiY0jZHWQZIohYEmr9KUC5rEaYEOFTq+ByllJK8w='
+      crossorigin='anonymous'
+    )
+
+  body
+    h1.ui.header Visitor's Blog
+    if articles.length
+      each article in articles
+        .ui.segment
+          h2.ui.header= article.title
+          each para in article.content
+            p= para
+    else
+      p There are no articles published by visitors yet.
